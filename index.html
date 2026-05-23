@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SDG 15 - Life on Land</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Comic Sans MS', sans-serif;
+}
+
+body{
+    background: linear-gradient(to bottom, #d9f7be, #ffffff);
+    color:#234;
+    overflow-x:hidden;
+}
+
+header{
+    background:#56ab2f;
+    color:white;
+    text-align:center;
+    padding:30px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+header img{
+    width:120px;
+    margin-bottom:15px;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header p{
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+nav{
+    background:#3f7d20;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    background:#6cc24a;
+    padding:10px 20px;
+    border-radius:30px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#8de969;
+    transform:scale(1.05);
+}
+
+section{
+    padding:40px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+    margin-bottom:20px;
+    color:#2e7d32;
+    font-size:2rem;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    align-items:center;
+}
+
+.hero img{
+    width:100%;
+    border-radius:20px;
+}
+
+.theory-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.theory-box{
+    background:#f0ffe7;
+    border-left:8px solid #56ab2f;
+    padding:20px;
+    border-radius:15px;
+}
+
+.flashcards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.flashcard{
+    perspective:1000px;
+    height:220px;
+    cursor:pointer;
+}
+
+.flashcard-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform 0.8s;
+    transform-style:preserve-3d;
+}
+
+.flashcard.flip .flashcard-inner{
+    transform:rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.flashcard-front{
+    background:#8de969;
+    color:#1b3b0f;
+}
+
+.flashcard-back{
+    background:#2e7d32;
+    color:white;
+    transform:rotateY(180deg);
+}
+
+.quiz-question{
+    margin-bottom:25px;
+    padding:20px;
+    background:#f7fff2;
+    border-radius:15px;
+}
+
+.quiz-question h3{
+    margin-bottom:10px;
+}
+
+.quiz-question label{
+    display:block;
+    margin:8px 0;
+    cursor:pointer;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:#56ab2f;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#3f7d20;
+    transform:scale(1.05);
+}
+
+.result{
+    margin-top:20px;
+    font-size:1.4rem;
+    font-weight:bold;
+}
+
+.activities{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.activity{
+    background:#e9ffe1;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+}
+
+.activity img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.progress{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+}
+
+.progress span{
+    font-size:2rem;
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+footer{
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+.badge{
+    display:inline-block;
+    background:gold;
+    color:#333;
+    padding:10px 20px;
+    border-radius:30px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:2rem;
+    }
+}
+
+.achievement-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.achievement{
+    background:#e8ffe0;
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.3s;
+    border:4px solid transparent;
+}
+
+.achievement.unlocked{
+    background:#c6ffb3;
+    border:4px solid gold;
+}
+
+.achievement.locked{
+    filter:grayscale(1);
+    opacity:0.7;
+}
+
+#gameContainer{
+    position:relative;
+    width:100%;
+    max-width:800px;
+    height:500px;
+    margin:auto;
+    background:linear-gradient(to bottom,#b2f7ef,#e0ffe6);
+    overflow:hidden;
+    border-radius:20px;
+    border:5px solid #56ab2f;
+}
+
+#basket{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:60px;
+}
+
+.falling{
+    position:absolute;
+    font-size:40px;
+    top:-50px;
+}
+
+#scoreBoard{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:white;
+    padding:10px 20px;
+    border-radius:20px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-15.jpg" alt="SDG 15 Logo">
+    <h1>SDG 15 - Life on Land</h1>
+    <p>Learn how to protect forests, animals, and nature!</p>
+</header>
+
+<nav>
+    <a href="#theory">Theory</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#activities">Activities</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#progress">Progress</a>
+
+    <a href="#achievements">🏆 Achievements</a>
+    <a href="#game">🎮 Mini Game</a>
+</nav>
+
+<section id="theory" class="card">
+    <h2>Learn About SDG 15 🌍</h2>
+
+    <div class="theory-grid">
+
+        <div class="theory-box">
+            <h3>🌳 Forests</h3>
+            <p>
+                Forests are called the lungs of the Earth because they produce oxygen.
+                They help clean the air and provide homes for millions of animals.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🪓 Deforestation</h3>
+            <p>
+                Deforestation means cutting down too many trees.
+                This destroys animal habitats and increases climate change.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🦁 Endangered Animals</h3>
+            <p>
+                Some animals are endangered because humans destroy habitats,
+                pollute nature, or hunt illegally.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🐝 Pollinators</h3>
+            <p>
+                Bees and butterflies help plants grow by moving pollen from flower to flower.
+                Without pollinators, many foods would disappear.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>💧 Clean Water</h3>
+            <p>
+                Rivers and lakes are important ecosystems.
+                Animals, plants, and humans need clean water to survive.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>♻️ Recycling</h3>
+            <p>
+                Recycling helps reduce pollution and protects forests by reducing the need
+                to cut down trees for paper.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🌱 Planting Trees</h3>
+            <p>
+                Trees absorb carbon dioxide and help fight climate change.
+                Planting trees also creates homes for wildlife.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🐘 Wildlife Protection</h3>
+            <p>
+                Wildlife protection means keeping animals safe from hunting,
+                pollution, and habitat destruction.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🌍 Ecosystems</h3>
+            <p>
+                An ecosystem is a community of living things and their environment.
+                Forests, deserts, rivers, and oceans are ecosystems.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🔥 Wildfires</h3>
+            <p>
+                Wildfires can destroy forests and animal habitats.
+                Some fires happen naturally, but many are caused by humans.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🚯 Pollution</h3>
+            <p>
+                Pollution harms animals and ecosystems.
+                Plastic waste is especially dangerous for wildlife.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🌾 Sustainable Farming</h3>
+            <p>
+                Sustainable farming protects soil and nature while growing food.
+                Farmers can grow crops without harming ecosystems.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🌸 Plants Matter</h3>
+            <p>
+                Plants give us food, medicine, oxygen, and materials.
+                They are essential for life on Earth.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🐢 Habitat Loss</h3>
+            <p>
+                Habitat loss happens when forests or natural areas disappear.
+                Animals may lose their homes and food sources.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>☀️ Climate Change</h3>
+            <p>
+                Climate change affects forests, animals, and weather patterns.
+                Rising temperatures can damage ecosystems.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🧹 Keeping Nature Clean</h3>
+            <p>
+                Picking up litter and reducing waste help protect parks,
+                rivers, forests, and wildlife.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🦜 Rainforests</h3>
+            <p>
+                Rainforests contain more than half of the world’s plant and animal species.
+                They are extremely important ecosystems.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🐺 Food Chains</h3>
+            <p>
+                Animals and plants depend on each other in food chains.
+                If one species disappears, the ecosystem can change.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>🌎 Protecting Earth</h3>
+            <p>
+                Everyone can help the Earth by recycling, saving water,
+                reducing waste, and respecting nature.
+            </p>
+        </div>
+
+        <div class="theory-box">
+            <h3>👧 Kids Can Help!</h3>
+            <p>
+                Children can make a difference by planting trees,
+                learning about nature, and teaching others.
+            </p>
+       </div>
+
+    </div>
+</section>
+
+<!-- ========================= -->
+<!-- 20 FLASHCARDS SECTION -->
+<!-- Replace your old flashcards section with this -->
+<!-- ========================= -->
+
+<section id="flashcards" class="card">
+    <h2>20 Interactive Flashcards 🎴</h2>
+
+    <div class="flashcards">
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is SDG 15?</div>
+                <div class="flashcard-back">A goal to protect life on land.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What do forests produce?</div>
+                <div class="flashcard-back">Oxygen for humans and animals.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is deforestation?</div>
+                <div class="flashcard-back">Cutting down too many trees.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is biodiversity?</div>
+                <div class="flashcard-back">The variety of living things.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">Why are bees important?</div>
+                <div class="flashcard-back">They help plants grow.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is an ecosystem?</div>
+                <div class="flashcard-back">Living things and their environment.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What harms rivers?</div>
+                <div class="flashcard-back">Pollution and trash.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What can kids recycle?</div>
+                <div class="flashcard-back">Paper, glass, and plastic.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">Why are trees important?</div>
+                <div class="flashcard-back">They clean the air.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is climate change?</div>
+                <div class="flashcard-back">Long-term changes in Earth's climate.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">Name one endangered animal.</div>
+                <div class="flashcard-back">Tiger, rhino, or panda.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">How can we save water?</div>
+                <div class="flashcard-back">Turn off taps and use less water.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is habitat loss?</div>
+                <div class="flashcard-back">Animals losing their homes.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What are rainforests?</div>
+                <div class="flashcard-back">Forests with lots of rain and wildlife.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">How can litter hurt animals?</div>
+                <div class="flashcard-back">Animals may eat or get trapped in trash.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is wildlife protection?</div>
+                <div class="flashcard-back">Keeping animals safe.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">Why should we plant trees?</div>
+                <div class="flashcard-back">To help nature and animals.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What causes pollution?</div>
+                <div class="flashcard-back">Trash, smoke, and chemicals.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">What is recycling?</div>
+                <div class="flashcard-back">Turning old materials into new products.</div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-front">How can children help Earth?</div>
+                <div class="flashcard-back">Recycle, save water, and protect nature.</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="activities" class="card">
+
+<h2>🌿 Nature Activities</h2>
+
+<div class="activities">
+
+<div class="activity">
+<h3>🌱 Plant a Tree</h3>
+<p>Plant a flower or tree near your home.</p>
+</div>
+
+<div class="activity">
+<h3>♻️ Recycling Challenge</h3>
+<p>Recycle paper and plastic for one week.</p>
+</div>
+
+<div class="activity">
+<h3>🦁 Animal Research</h3>
+<p>Create a poster about an endangered animal.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="quiz" class="card">
+    <h2>SDG 15 Quiz - 20 Questions</h2>
+
+    <form id="quizForm"></form>
+
+    <button onclick="submitQuiz()">Check Answers</button>
+
+    <div class="result" id="result"></div>
+</section>
+
+<section id="progress" class="card progress">
+    <h2>Your Achievements</h2>
+
+    <p>Quizzes Completed:</p>
+    <span id="completed">0</span>
+
+    <div id="badgeArea"></div>
+</section>
+<section id="achievements" class="card">
+
+    <h2>🏆 Nature Achievements</h2>
+
+    <div class="achievement-grid">
+
+        <div class="achievement locked" id="a1">
+            <h3>🌱 Tree Planter</h3>
+            <p>Get 15 points in the mini game.</p>
+            <span>🔒 Locked</span>
+        </div>
+
+        <div class="achievement locked" id="a2">
+            <h3>🦁 Animal Protector</h3>
+            <p>Play the mini game.</p>
+            <span>🔒 Locked</span>
+        </div>
+
+        <div class="achievement locked" id="a3">
+            <h3>🎴 Flashcard Master</h3>
+            <p>Flip all flashcards.</p>
+            <span>🔒 Locked</span>
+        </div>
+
+        <div class="achievement locked" id="a4">
+            <h3>🧠 Quiz Explorer</h3>
+            <p>Complete the quiz.</p>
+            <span>🔒 Locked</span>
+        </div>
+
+        <div class="achievement locked" id="a5">
+            <h3>🌍 Earth Hero</h3>
+            <p>Score 18/20 in the quiz.</p>
+            <span>🔒 Locked</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="game" class="card">
+
+    <h2>🎮 Save The Forest Mini Game</h2>
+
+    <p>Use LEFT and RIGHT arrow keys to catch good items ♻️ and avoid dangerous ones ☠️</p>
+
+    <div id="gameContainer">
+
+        <div id="scoreBoard">
+            Score: <span id="gameScore">0</span> |
+            Lives: <span id="lives">❤️❤️❤️</span>
+        </div>
+
+        <div id="basket">🧺</div>
+
+    </div>
+
+    <button type="button" onclick="startGame()">Start Game</button>
+
+</section>
+</section>
+<footer>
+    <p>SDG 15 Educational Resource for Primary School Students 🌍</p>
+</footer>
+<script>
+
+let unlockedAchievements =
+JSON.parse(localStorage.getItem("sdgAchievements")) || {};
+
+function unlockAchievement(id){
+
+    unlockedAchievements[id] = true;
+
+    localStorage.setItem(
+        "sdgAchievements",
+        JSON.stringify(unlockedAchievements)
+    );
+
+    renderAchievements();
+}
+
+function renderAchievements(){
+
+    const achievements =
+    document.querySelectorAll(".achievement");
+
+    achievements.forEach(a=>{
+
+        if(unlockedAchievements[a.id]){
+
+            a.classList.remove("locked");
+            a.classList.add("unlocked");
+
+            a.querySelector("span").innerHTML =
+            "✅ Unlocked!";
+        }
+    });
+}
+
+renderAchievements();
+
+
+/* FLASHCARDS */
+
+let flippedCards = 0;
+
+const allFlashcards =
+document.querySelectorAll(".flashcard");
+
+allFlashcards.forEach(card=>{
+
+});
+
+/* =========================
+   MINI GAME COMPLETO
+========================= */
+
+const gameContainer = document.getElementById("gameContainer");
+const basket = document.getElementById("basket");
+const scoreDisplay = document.getElementById("gameScore");
+const livesDisplay = document.getElementById("lives");
+
+let basketX = 350;
+let gameScore = 0;
+let lives = 3;
+let gameRunning = false;
+let gameInterval;
+
+// -------------------------
+// MOVIMIENTO DEL CESTO
+// -------------------------
+document.addEventListener("keydown", (e) => {
+    if (!gameRunning) return;
+
+    if (e.key === "ArrowLeft") basketX -= 35;
+    if (e.key === "ArrowRight") basketX += 35;
+
+    basketX = Math.max(0, Math.min(740, basketX));
+    basket.style.left = basketX + "px";
+});
+
+// -------------------------
+// CREAR OBJETOS
+// -------------------------
+function createFallingItem() {
+    if (!gameRunning) return;
+
+    const item = document.createElement("div");
+    item.classList.add("falling");
+
+    const goodItems = ["♻️", "🌱", "🍃"];
+    const badItems = ["☠️", "🧴", "🚬"];
+
+    const isBad = Math.random() < 0.35; // 35% malos
+
+    item.dataset.type = isBad ? "bad" : "good";
+    item.innerHTML = isBad
+        ? badItems[Math.floor(Math.random() * badItems.length)]
+        : goodItems[Math.floor(Math.random() * goodItems.length)];
+
+    let x = Math.random() * 750;
+    let y = -50;
+
+    item.style.left = x + "px";
+    gameContainer.appendChild(item);
+
+    const fall = setInterval(() => {
+
+        if (!gameRunning) {
+            clearInterval(fall);
+            item.remove();
+            return;
+        }
+
+        y += 6;
+        item.style.top = y + "px";
+
+        const basketRect = basket.getBoundingClientRect();
+        const itemRect = item.getBoundingClientRect();
+
+        const collision =
+            itemRect.bottom >= basketRect.top &&
+            itemRect.left < basketRect.right &&
+            itemRect.right > basketRect.left;
+
+        if (collision) {
+
+            if (item.dataset.type === "good") {
+                gameScore++;
+                scoreDisplay.innerText = gameScore;
+
+                if (gameScore >= 1) unlockAchievement("a2");
+                if (gameScore >= 15) unlockAchievement("a1");
+            } 
+            else {
+                lives--;
+                updateLives();
+            }
+
+            item.remove();
+            clearInterval(fall);
+
+            checkGameOver();
+        }
+
+        if (y > 520) {
+
+            // si se escapa un bueno → penaliza
+            if (item.dataset.type === "good") {
+                lives--;
+                updateLives();
+                checkGameOver();
+            }
+
+            item.remove();
+            clearInterval(fall);
+        }
+
+    }, 30);
+}
+
+// -------------------------
+// VIDAS UI
+// -------------------------
+function updateLives() {
+    livesDisplay.innerHTML = "❤️".repeat(lives);
+}
+
+// -------------------------
+// GAME OVER
+// -------------------------
+function checkGameOver() {
+    if (lives <= 0) {
+        gameRunning = false;
+        clearInterval(gameInterval);
+        alert("💀 Game Over!");
+    }
+}
+
+// -------------------------
+// INICIAR JUEGO
+// -------------------------
+function startGame() {
+    gameScore = 0;
+    lives = 3;
+
+    scoreDisplay.innerText = gameScore;
+    updateLives();
+
+    gameRunning = true;
+
+    clearInterval(gameInterval);
+    gameInterval = setInterval(createFallingItem, 900);
+
+    setTimeout(() => {
+        gameRunning = false;
+        clearInterval(gameInterval);
+        alert("🎮 Time's up!");
+    }, 30000);
+}
+
+</script>
+<script>
+
+const questions = [
+{
+q:"1. What does SDG 15 protect?",
+a:["Oceans","Forests and animals","Cars","Factories"],
+c:1
+},
+{
+q:"2. What gives us oxygen?",
+a:["Plastic","Cars","Trees","Buildings"],
+c:2
+},
+{
+q:"3. What is biodiversity?",
+a:["Different living things","Only insects","Only trees","Only fish"],
+c:0
+},
+{
+q:"4. What is deforestation?",
+a:["Planting flowers","Cutting many trees","Cleaning rivers","Saving water"],
+c:1
+},
+{
+q:"5. Which animal may become extinct?",
+a:["Endangered species","Pets","Farm animals","Birds"],
+c:0
+},
+{
+q:"6. Which action helps nature?",
+a:["Littering","Burning forests","Recycling","Wasting water"],
+c:2
+},
+{
+q:"7. Forests are homes for...",
+a:["Animals","Cars","Computers","Roads"],
+c:0
+},
+{
+q:"8. What can pollute rivers?",
+a:["Trash","Flowers","Fish","Rain"],
+c:0
+},
+{
+q:"9. Why are bees important?",
+a:["They pollinate plants","They build roads","They make plastic","They cut trees"],
+c:0
+},
+{
+q:"10. What should we reduce?",
+a:["Nature","Pollution","Animals","Forests"],
+c:1
+},
+{
+q:"11. What can you plant?",
+a:["Plastic","Glass","Trees","Metal"],
+c:2
+},
+{
+q:"12. Which energy is cleaner?",
+a:["Solar energy","Oil","Coal","Gas"],
+c:0
+},
+{
+q:"13. What is an ecosystem?",
+a:["A group of living things","A video game","A machine","A toy"],
+c:0
+},
+{
+q:"14. Which helps save animals?",
+a:["Protecting habitats","Polluting rivers","Cutting forests","Littering"],
+c:0
+},
+{
+q:"15. What should you do with trash?",
+a:["Throw in rivers","Recycle it","Leave outside","Burn it"],
+c:1
+},
+{
+q:"16. Why are forests important?",
+a:["Clean air","More pollution","Noise","Traffic"],
+c:0
+},
+{
+q:"17. Which animal is endangered?",
+a:["Tiger","Dog","Cat","Chicken"],
+c:0
+},
+{
+q:"18. What should we save?",
+a:["Water","Pollution","Smoke","Trash"],
+c:0
+},
+{
+q:"19. What color is the SDG 15 logo?",
+a:["Green","Blue","Red","Black"],
+c:0
+},
+{
+q:"20. How can children help Earth?",
+a:["Recycle and plant trees","Pollute rivers","Cut trees","Waste paper"],
+c:0
+}
+];
+
+const quizForm = document.getElementById("quizForm");
+
+questions.forEach((question,index)=>{
+
+const div = document.createElement("div");
+div.classList.add("quiz-question");
+
+let html = `<h3>${question.q}</h3>`;
+
+question.a.forEach((option,i)=>{
+html += `
+<label>
+<input type="radio" name="q${index}" value="${i}">
+${option}
+</label>
+`;
+});
+
+div.innerHTML = html;
+quizForm.appendChild(div);
+
+});
+
+function submitQuiz(){
+
+let score = 0;
+
+questions.forEach((question,index)=>{
+const answer = document.querySelector(`input[name="q${index}"]:checked`);
+
+if(answer && Number(answer.value) === question.c){
+score++;
+}
+});
+
+const result = document.getElementById("result");
+
+result.innerHTML = `You scored ${score} / ${questions.length} 🎉`;
+
+let completed = localStorage.getItem("sdg15Completed");
+
+if(!completed){
+completed = 0;
+}
+
+completed = Number(completed) + 1;
+
+localStorage.setItem("sdg15Completed", completed);
+
+document.getElementById("completed").textContent = completed;
+
+if(score >= 15){
+localStorage.setItem("sdg15Badge","Nature Hero");
+}
+
+showBadge();
+}
+
+function showBadge(){
+
+const badgeArea = document.getElementById("badgeArea");
+
+const badge = localStorage.getItem("sdg15Badge");
+
+if(badge){
+badgeArea.innerHTML = `
+<div class="badge">
+🏆 ${badge}
+</div>
+`;
+}
+}
+
+function loadProgress(){
+
+const completed = localStorage.getItem("sdg15Completed") || 0;
+
+document.getElementById("completed").textContent = completed;
+
+showBadge();
+}
+
+loadProgress();
+
+const flashcards = document.querySelectorAll(".flashcard");
+
+flashcards.forEach(card=>{
+card.addEventListener("click",()=>{
+card.classList.toggle("flip");
+});
+});
+
+</script>
+
+</body>
+</html>
