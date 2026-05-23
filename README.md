@@ -1,0 +1,1 @@
+TO OPEN THE RESOURCE, CLIC THE FILE "index.html" above☝️
